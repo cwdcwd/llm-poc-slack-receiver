@@ -114,6 +114,37 @@ definitions:
       password:
         type: string
         description: user Password
+  slacks:
+    type: object
+    required:
+        - slack
+    properties:
+      type:
+        type: string
+        description: slack main type
+      channel:
+        type: string
+        description: slack channel id
+      subtype:
+        type: string
+        description: slack sub type
+      text:
+        type: string
+        description: slack text
+      ts:
+        type: string
+        description: slack timestamp
+      user:
+        type: string
+        description: slack user id
+# {
+#   'type': 'message',
+#   "channel": "C123ABC456",
+#   'subtype': 'channel_join',
+#   'text': '<@U123ABC456|bobby> has joined the channel',
+#   'ts': '1403051575.000407',
+#   'user': 'U123ABC456',
+# }
 
 schemes:
  - https
