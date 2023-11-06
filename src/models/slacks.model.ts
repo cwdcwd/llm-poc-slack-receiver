@@ -46,7 +46,7 @@ import { Slack } from '@/interfaces/slacks.interface'
 // }
 
 const SlackSchema: Schema = new Schema({
-  id: {
+  event_id: {
     type: String,
     required: true,
     unique: true,

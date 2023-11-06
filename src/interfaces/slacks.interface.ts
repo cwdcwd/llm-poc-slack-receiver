@@ -9,14 +9,14 @@ export interface SlackEvent {
 }
 
 export interface Slack {
-  id?: string
+  _id?: string
+  event_id?: string
   type: string
   challenge?: string
   event?: SlackEvent
   token: string
   team_id?: string
   api_app_id?: string
-  event_id?: string
   event_time?: number
   authed_users?: string[]
   authorizations?: string[]

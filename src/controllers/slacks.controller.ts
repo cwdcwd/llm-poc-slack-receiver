@@ -4,7 +4,7 @@ import { Container } from 'typedi'
 import { Slack } from '@interfaces/slacks.interface'
 import { SlackService } from '@/services/slacks.service'
 import { createHmac } from 'crypto'
-import KSUID from 'ksuid'
+// import KSUID from 'ksuid'
 
 const SLACK_SIGNING_SECRET = process.env.SLACK_SIGNING_SECRET || ''
 
@@ -68,7 +68,7 @@ export class SlackController {
 
   public createSlack = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const id = await KSUID.random()
+      // const id = await KSUID.random()
       const bodyData: Slack = req.body
       console.log(bodyData)
 
@@ -76,7 +76,7 @@ export class SlackController {
         res.status(200).json({ challenge: bodyData.challenge })
       } else {
         const slackData: Slack = {
-          id: id.string,
+          // _id: id.string,
           type: bodyData.type,
           challenge: bodyData.challenge,
           token: bodyData.token,

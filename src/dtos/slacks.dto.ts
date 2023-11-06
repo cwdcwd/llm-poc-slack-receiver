@@ -46,6 +46,10 @@ export class SlackEventDto {
 
 export class CreateSlackDto {
   @IsString()
+  @IsOptional()
+  public event_id: string
+
+  @IsString()
   public type: string
 
   @IsString()
@@ -69,6 +73,10 @@ export class UpdateSlackDto {
   @IsString()
   @IsNotEmpty()
   public _id: string
+
+  @IsString()
+  @IsNotEmpty()
+  public event_id: string
 
   @IsString()
   public type: string
