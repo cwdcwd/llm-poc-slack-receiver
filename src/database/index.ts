@@ -1,10 +1,14 @@
 import { connect, set } from 'mongoose'
-import { NODE_ENV, DB_HOST, DB_PORT, DB_DATABASE } from '@config'
+import { NODE_ENV, DB_HOST, DB_PORT, DB_DATABASE, DB_USER, DB_PASSWORD } from '@config'
 
 export const dbConnection = async () => {
   const dbConfig = {
-    url: `mongodb://${DB_HOST}:${DB_PORT}/${DB_DATABASE}`,
+    url: `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/`,
     options: {
+      // auth: {
+      //   username: DB_USER,
+      //   password: DB_PASSWORD,
+      // },
       useNewUrlParser: true,
       useUnifiedTopology: true,
     },
@@ -14,5 +18,7 @@ export const dbConnection = async () => {
     set('debug', true)
   }
 
+  console.log('Connecting to database...')
+  console.log(dbConfig)
   await connect(dbConfig.url, dbConfig.options)
 }
