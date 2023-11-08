@@ -1,3 +1,4 @@
+import { logger } from '@/utils/logger'
 import { connect, set } from 'mongoose'
 import { NODE_ENV, DB_HOST, DB_PORT, DB_DATABASE, DB_USER, DB_PASSWORD } from '@config'
 
@@ -18,12 +19,12 @@ export const dbConnection = async () => {
     set('debug', true)
   }
 
-  console.log('Connecting to database...')
-  console.log(dbConfig)
+  logger.info('Connecting to database...')
+  logger.info(dbConfig)
   try {
     await connect(dbConfig.url, dbConfig.options)
   } catch (error) {
-    console.log('Error connecting to database: ', error)
+    logger.error('Error connecting to database: ', error)
     process.exit(1)
   }
 }
