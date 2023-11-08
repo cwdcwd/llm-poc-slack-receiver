@@ -25,7 +25,7 @@ export class App {
     this.env = NODE_ENV || 'development'
     this.port = PORT || 3000
 
-    this.connectToDatabase()
+    // this.connectToDatabase()
     this.initializeMiddlewares()
     this.initializeRoutes(routes)
     this.initializeSwagger()
