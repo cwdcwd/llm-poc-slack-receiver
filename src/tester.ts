@@ -1,10 +1,17 @@
-import { App } from '@/app'
-import { SlackRoute } from './routes/slacks.route'
-// import { logger } from '@utils/logger'
+const express = require('express')
+const app = express()
+const port = process.env.PORT || 3000
 
-// logger.info('starting up...')
+import { logger } from '@utils/logger'
 
-const app = new App([new SlackRoute()])
+app.get('/', (req, res) => {
+  logger.info('Hello World!')
+  res.send('Hello World!')
+})
 
-app.listen()
-// logger.info('started')
+app.listen(port, () => {
+  logger.info(`=================================`)
+  logger.info(`======= ENV: ${process.env.NODE_ENV} =======`)
+  logger.info(`🚀 App listening on the port ${port}`)
+  console.log(`Example app listening on port ${port}`)
+})

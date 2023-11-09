@@ -10,7 +10,7 @@ export class SlackRoute implements Routes {
   public slack = new SlackController()
 
   constructor() {
-    // this.initializeRoutes()
+    this.initializeRoutes()
   }
 
   private initializeRoutes() {
