@@ -1,11 +1,10 @@
 import { App } from '@/app'
 import { SlackRoute } from './routes/slacks.route'
-import { logger } from '@utils/logger'
+// import { logger } from '@utils/logger'
 
-logger.info('starting up...')
-// ValidateEnv()
+// logger.info('starting up...')
 
 const app = new App([new SlackRoute()])
 
 app.listen()
-logger.info('started')
+// logger.info('started')

@@ -24,6 +24,18 @@ export class App {
     this.app = express()
     this.env = NODE_ENV || 'development'
     this.port = PORT || 3000
+
+    logger.info('connectToDatabase')
+    this.connectToDatabase()
+    logger.info('initializeMiddlewares')
+    this.initializeMiddlewares()
+    logger.info('initializeRoutes')
+    this.initializeRoutes(routes)
+    logger.info('initializeSwagger')
+    this.initializeSwagger()
+    logger.info('initializeErrorHandling')
+    this.initializeErrorHandling()
+    logger.info('constructor end')
   }
 
   public listen() {
