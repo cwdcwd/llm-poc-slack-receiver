@@ -4,9 +4,8 @@ import { Container } from 'typedi'
 import { Slack } from '@interfaces/slacks.interface'
 import { SlackService } from '@/services/slacks.service'
 import { createHmac } from 'crypto'
+import { SLACK_SIGNING_SECRET } from '@config'
 // import KSUID from 'ksuid'
-
-const SLACK_SIGNING_SECRET = process.env.SLACK_SIGNING_SECRET || ''
 
 export class SlackController {
   public slack = Container.get(SlackService)
