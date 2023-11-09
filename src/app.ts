@@ -24,18 +24,6 @@ export class App {
     this.app = express()
     this.env = NODE_ENV || 'development'
     this.port = PORT || 3000
-
-    logger.info('connectToDatabase')
-    this.connectToDatabase()
-    logger.info('initializeMiddlewares')
-    this.initializeMiddlewares()
-    logger.info('initializeRoutes')
-    this.initializeRoutes(routes)
-    logger.info('initializeSwagger')
-    this.initializeSwagger()
-    logger.info('initializeErrorHandling')
-    this.initializeErrorHandling()
-    logger.info('constructor end')
   }
 
   public listen() {
@@ -56,18 +44,6 @@ export class App {
   }
 
   private initializeMiddlewares() {
-    // this.app.use((req, res, next) => {
-    //   let data = ''
-    //   req.on('data', chunk => {
-    //     data += chunk
-    //   })
-    //   req.on('end', () => {
-    //     // @ts-ignore
-    //     req.rawBody = data
-    //     console.log(`data: ${data}`)
-    //     next()
-    //   })
-    // })
     this.app.use(morgan(LOG_FORMAT, { stream }))
     this.app.use(cors({ origin: ORIGIN, credentials: CREDENTIALS }))
     this.app.use(hpp())
