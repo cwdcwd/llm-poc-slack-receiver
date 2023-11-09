@@ -1,11 +1,13 @@
-const express = require('express')
-const app = express()
-const port = process.env.PORT || 3000
+import { App } from '@/app'
+import { AuthRoute } from '@routes/auth.route'
+import { UserRoute } from '@routes/users.route'
+import { SlackRoute } from './routes/slacks.route'
+import { logger } from '@utils/logger'
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+logger.info('starting up...')
+// ValidateEnv()
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+const app = new App([new SlackRoute()])
+
+app.listen()
+logger.info('started')
