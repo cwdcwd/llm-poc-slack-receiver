@@ -4,8 +4,8 @@ const port = process.env.PORT || 3000
 
 import { Routes } from '@interfaces/routes.interface'
 import { logger } from '@utils/logger'
-import { AuthRoute } from '@routes/auth.route'
-import { UserRoute } from '@routes/users.route'
+// import { AuthRoute } from '@routes/auth.route'
+// import { UserRoute } from '@routes/users.route'
 import { SlackRoute } from './routes/slacks.route'
 
 app.get('/', (req, res) => {
@@ -14,9 +14,9 @@ app.get('/', (req, res) => {
 })
 
 const routes: Routes[] = [
-  // new SlackRoute(),
+  new SlackRoute(),
   // new UserRoute(),
-  new AuthRoute(),
+  // new AuthRoute(),
 ]
 
 routes.forEach(route => {
