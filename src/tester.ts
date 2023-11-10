@@ -13,7 +13,11 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-const routes: Routes[] = [new SlackRoute(), new UserRoute(), new AuthRoute()]
+const routes: Routes[] = [
+  // new SlackRoute(),
+  // new UserRoute(),
+  new AuthRoute(),
+]
 
 routes.forEach(route => {
   app.use('/', route.router)
