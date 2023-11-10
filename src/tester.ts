@@ -20,6 +20,7 @@ const routes: Routes[] = [
 ]
 
 routes.forEach(route => {
+  logger.info(`Setting up route for: ${route}`)
   app.use('/', route.router)
 })
 
