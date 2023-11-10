@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
 
+import { Routes } from '@interfaces/routes.interface'
 import { logger } from '@utils/logger'
 
 app.get('/', (req, res) => {
