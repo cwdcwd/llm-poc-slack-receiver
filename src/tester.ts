@@ -6,7 +6,7 @@ import { Routes } from '@interfaces/routes.interface'
 import { logger } from '@utils/logger'
 // import { AuthRoute } from '@routes/auth.route'
 // import { UserRoute } from '@routes/users.route'
-import { SlackRoute } from './routes/slacks.route'
+import { SlackRoute } from '@routes//slacks.route'
 
 app.get('/', (req, res) => {
   logger.info('Hello World!')
