@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 })
 
 const routes: Routes[] = [
-  // new SlackRoute(),
+  new SlackRoute(),
   // new UserRoute(),
   // new AuthRoute(),
 ]
