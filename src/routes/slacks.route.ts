@@ -17,7 +17,7 @@ export class SlackRoute implements Routes {
   private initializeRoutes() {
     console.log('SlackRoute initializeRoutes')
     this.router.use(this.slack.validateOrigin)
-    // this.router.get(`${this.path}`, this.slack.getSlacks)
+    this.router.get(`${this.path}`, this.slack.getSlacks)
     // this.router.get(`${this.path}/:id`, this.slack.getSlackById)
     // this.router.post(`${this.path}`, ValidationMiddleware(CreateSlackDto, true), this.slack.createSlack)
     // this.router.put(`${this.path}/:id`, ValidationMiddleware(UpdateSlackDto, true), this.slack.updateSlack)
