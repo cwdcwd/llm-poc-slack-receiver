@@ -8,7 +8,7 @@ import { SLACK_SIGNING_SECRET } from '@config'
 // import KSUID from 'ksuid'
 
 export class SlackController {
-  public slack = Container.get(SlackService)
+  public slack = new SlackService() //Container.get(SlackService)
 
   public validateOrigin = (req: Request, res: Response, next: NextFunction) => {
     // const origin = req.headers.origin
