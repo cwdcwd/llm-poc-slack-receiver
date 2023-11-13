@@ -26,7 +26,6 @@ export class SlackController {
     const signature = req.headers['x-slack-signature']
     const version = 'v0'
     const timestamp = req.headers['x-slack-request-timestamp']
-    // @ts-ignore
     const body = req.rawBody //(await rawBody(req)).toString()
 
     // console.log(`body: ${body}`)

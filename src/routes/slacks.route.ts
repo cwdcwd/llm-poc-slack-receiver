@@ -10,10 +10,12 @@ export class SlackRoute implements Routes {
   public slack = new SlackController()
 
   constructor() {
+    console.log('SlackRoute constructor')
     this.initializeRoutes()
   }
 
   private initializeRoutes() {
+    console.log('SlackRoute initializeRoutes')
     this.router.use(this.slack.validateOrigin)
     // this.router.get(`${this.path}`, this.slack.getSlacks)
     // this.router.get(`${this.path}/:id`, this.slack.getSlackById)
