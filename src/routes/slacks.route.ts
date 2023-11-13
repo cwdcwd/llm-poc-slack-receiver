@@ -7,7 +7,7 @@ import { ValidationMiddleware } from '@middlewares/validation.middleware'
 export class SlackRoute implements Routes {
   public path = '/slacks'
   public router = Router()
-  public slack = new SlackController()
+  // public slack = new SlackController()
 
   constructor() {
     console.log('SlackRoute constructor')
