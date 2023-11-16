@@ -5,6 +5,10 @@ import { SlackModel } from '@/models/slacks.model'
 
 // @Service()
 export class SlackService {
+  constructor() {
+    console.log('SlackService constructor')
+  }
+
   public async findAllSlacks(): Promise<Slack[]> {
     const Slacks: Slack[] = await SlackModel.find()
     return Slacks
