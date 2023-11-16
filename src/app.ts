@@ -27,8 +27,8 @@ export class App {
 
     logger.info('connectToDatabase')
     this.connectToDatabase()
-    // logger.info('initializeMiddlewares')
-    // this.initializeMiddlewares()
+    logger.info('initializeMiddlewares')
+    this.initializeMiddlewares()
     logger.info('initializeRoutes')
     this.initializeRoutes(routes)
     logger.info('initializeSwagger')

@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { SlackController } from '@/controllers/slacks.controller'
+// import { SlackController } from '@/controllers/slacks.controller'
 // import { CreateSlackDto, UpdateSlackDto } from '@/dtos/slacks.dto'
 import { Routes } from '@interfaces/routes.interface'
 // import { ValidationMiddleware } from '@middlewares/validation.middleware'
@@ -7,7 +7,7 @@ import { Routes } from '@interfaces/routes.interface'
 export class SlackRoute implements Routes {
   public path = '/slacks'
   public router = Router()
-  public slack = new SlackController()
+  // public slack = new SlackController()
 
   constructor() {
     console.log('SlackRoute constructor')
