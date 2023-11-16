@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 // import rawBody from 'raw-body'
 // import { Container } from 'typedi'
-// import { Slack } from '@interfaces/slacks.interface'
+import { Slack } from '@interfaces/slacks.interface'
 import { SlackService } from '@/services/slacks.service'
 import { createHmac } from 'crypto'
 import { SLACK_SIGNING_SECRET } from '@config'
@@ -44,15 +44,15 @@ export class SlackController {
     next()
   }
 
-  // public getSlacks = async (req: Request, res: Response, next: NextFunction) => {
-  //   try {
-  //     const findAllSlacksData: Slack[] = await this.slack.findAllSlacks()
+  public getSlacks = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const findAllSlacksData: Slack[] = await this.slack.findAllSlacks()
 
-  //     res.status(200).json({ data: findAllSlacksData, message: 'findAll' })
-  //   } catch (error) {
-  //     next(error)
-  //   }
-  // }
+      res.status(200).json({ data: findAllSlacksData, message: 'findAll' })
+    } catch (error) {
+      next(error)
+    }
+  }
 
   // public getSlackById = async (req: Request, res: Response, next: NextFunction) => {
   //   try {
