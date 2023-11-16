@@ -14,21 +14,21 @@ export class SlackService {
     return Slacks
   }
 
-  public async findSlackById(SlackId: string): Promise<Slack> {
-    const findSlack: Slack = await SlackModel.findOne({ _id: SlackId })
-    if (!findSlack) throw new HttpException(409, "Slack doesn't exist")
+  // public async findSlackById(SlackId: string): Promise<Slack> {
+  //   const findSlack: Slack = await SlackModel.findOne({ _id: SlackId })
+  //   if (!findSlack) throw new HttpException(409, "Slack doesn't exist")
 
-    return findSlack
-  }
-
-  // public async createSlack(SlackData: Slack): Promise<Slack> {
-  //   const findSlack: Slack = await SlackModel.findOne({ _id: SlackData._id })
-  //   if (findSlack) throw new HttpException(409, `This id ${SlackData._id} already exists`)
-
-  //   const createSlackData: Slack = await SlackModel.create({ ...SlackData })
-
-  //   return createSlackData
+  //   return findSlack
   // }
+
+  public async createSlack(SlackData: Slack): Promise<Slack> {
+    const findSlack: Slack = await SlackModel.findOne({ _id: SlackData._id })
+    if (findSlack) throw new HttpException(409, `This id ${SlackData._id} already exists`)
+
+    const createSlackData: Slack = await SlackModel.create({ ...SlackData })
+
+    return createSlackData
+  }
 
   // public async updateSlack(SlackId: string, SlackData: Slack): Promise<Slack> {
   //   if (SlackData._id) {
