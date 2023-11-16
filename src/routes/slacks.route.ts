@@ -11,7 +11,7 @@ export class SlackRoute implements Routes {
 
   constructor() {
     console.log('SlackRoute constructor')
-    this.initializeRoutes()
+    // this.initializeRoutes()
   }
 
   private initializeRoutes() {
