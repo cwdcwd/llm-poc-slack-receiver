@@ -1,9 +1,9 @@
-import { Service } from 'typedi'
+// import { Service } from 'typedi'
 import { HttpException } from '@exceptions/httpException'
 import { Slack } from '@/interfaces/slacks.interface'
 import { SlackModel } from '@/models/slacks.model'
 
-@Service()
+// @Service()
 export class SlackService {
   public async findAllSlacks(): Promise<Slack[]> {
     const Slacks: Slack[] = await SlackModel.find()
