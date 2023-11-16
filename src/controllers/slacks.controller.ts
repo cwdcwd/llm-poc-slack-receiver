@@ -1,14 +1,14 @@
 import { NextFunction, Request, Response } from 'express'
 // import rawBody from 'raw-body'
-// import { Container } from 'typedi'
+import { Container } from 'typedi'
 import { Slack } from '@interfaces/slacks.interface'
-// import { SlackService } from '@/services/slacks.service'
+import { SlackService } from '@/services/slacks.service'
 import { createHmac } from 'crypto'
 import { SLACK_SIGNING_SECRET } from '@config'
 // import KSUID from 'ksuid'
 
 export class SlackController {
-  // public slack = Container.get(SlackService)
+  public slack = Container.get(SlackService)
 
   public validateOrigin = (req: Request, res: Response, next: NextFunction) => {
     // const origin = req.headers.origin
