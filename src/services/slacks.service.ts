@@ -1,6 +1,6 @@
 // import { Service } from 'typedi'
 // import { HttpException } from '@exceptions/httpException'
-// import { Slack } from '@/interfaces/slacks.interface'
+import { Slack } from '@/interfaces/slacks.interface'
 import { SlackModel } from '@/models/slacks.model'
 
 // @Service()
@@ -9,10 +9,10 @@ export class SlackService {
     console.log('SlackService constructor')
   }
 
-  // public async findAllSlacks(): Promise<Slack[]> {
-  //   const Slacks: Slack[] = await SlackModel.find()
-  //   return Slacks
-  // }
+  public async findAllSlacks(): Promise<Slack[]> {
+    const Slacks: Slack[] = await SlackModel.find()
+    return Slacks
+  }
 
   // public async findSlackById(SlackId: string): Promise<Slack> {
   //   const findSlack: Slack = await SlackModel.findOne({ _id: SlackId })
