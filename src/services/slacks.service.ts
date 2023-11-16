@@ -1,7 +1,7 @@
 // import { Service } from 'typedi'
 // import { HttpException } from '@exceptions/httpException'
 // import { Slack } from '@/interfaces/slacks.interface'
-// import { SlackModel } from '@/models/slacks.model'
+import { SlackModel } from '@/models/slacks.model'
 
 // @Service()
 export class SlackService {
