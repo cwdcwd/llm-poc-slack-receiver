@@ -15,7 +15,7 @@ export class SlackService {
   }
 
   public async findSlackById(SlackId: string): Promise<Slack> {
-    // const findSlack: Slack = await SlackModel.findOne({ _id: SlackId })
+    const findSlack: Slack = await SlackModel.findOne({ _id: SlackId })
     // if (!findSlack) throw new HttpException(409, "Slack doesn't exist")
     // return findSlack
     return null
