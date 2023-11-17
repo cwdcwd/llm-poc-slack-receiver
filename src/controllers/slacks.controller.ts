@@ -54,16 +54,16 @@ export class SlackController {
     }
   }
 
-  // public getSlackById = async (req: Request, res: Response, next: NextFunction) => {
-  //   try {
-  //     const slackId: string = req.params.id
-  //     const findOneSlackData: Slack = await this.slack.findSlackById(slackId)
+  public getSlackById = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const slackId: string = req.params.id
+      const findOneSlackData: Slack = await this.slack.findSlackById(slackId)
 
-  //     res.status(200).json({ data: findOneSlackData, message: 'findOne' })
-  //   } catch (error) {
-  //     next(error)
-  //   }
-  // }
+      res.status(200).json({ data: findOneSlackData, message: 'findOne' })
+    } catch (error) {
+      next(error)
+    }
+  }
 
   // public createSlack = async (req: Request, res: Response, next: NextFunction) => {
   //   try {
