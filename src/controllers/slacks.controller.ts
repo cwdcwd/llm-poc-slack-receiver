@@ -65,55 +65,55 @@ export class SlackController {
     }
   }
 
-  // public createSlack = async (req: Request, res: Response, next: NextFunction) => {
-  //   try {
-  //     // const id = await KSUID.random()
-  //     const bodyData: Slack = req.body
-  //     console.log(bodyData)
+  public createSlack = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      // const id = await KSUID.random()
+      const bodyData: Slack = req.body
+      console.log(bodyData)
 
-  //     if (bodyData.type === 'url_verification') {
-  //       res.status(200).json({ challenge: bodyData.challenge })
-  //     } else {
-  //       const slackData: Slack = {
-  //         // _id: id.string,
-  //         type: bodyData.type,
-  //         challenge: bodyData.challenge,
-  //         token: bodyData.token,
-  //         team_id: bodyData.team_id,
-  //         api_app_id: bodyData.api_app_id,
-  //         event: bodyData.event,
-  //         event_id: bodyData.event_id,
-  //         event_time: bodyData.event_time,
-  //         authed_users: bodyData.authed_users,
-  //       }
-  //       const createSlackData: Slack = await this.slack.createSlack(slackData)
-  //       res.status(201).json({ data: createSlackData, message: 'created' })
-  //     }
-  //   } catch (error) {
-  //     next(error)
-  //   }
-  // }
+      if (bodyData.type === 'url_verification') {
+        res.status(200).json({ challenge: bodyData.challenge })
+      } else {
+        const slackData: Slack = {
+          // _id: id.string,
+          type: bodyData.type,
+          challenge: bodyData.challenge,
+          token: bodyData.token,
+          team_id: bodyData.team_id,
+          api_app_id: bodyData.api_app_id,
+          event: bodyData.event,
+          event_id: bodyData.event_id,
+          event_time: bodyData.event_time,
+          authed_users: bodyData.authed_users,
+        }
+        const createSlackData: Slack = await this.slack.createSlack(slackData)
+        res.status(201).json({ data: createSlackData, message: 'created' })
+      }
+    } catch (error) {
+      next(error)
+    }
+  }
 
-  // public updateSlack = async (req: Request, res: Response, next: NextFunction) => {
-  //   try {
-  //     const slackId: string = req.params.id
-  //     const slackData: Slack = req.body
-  //     const updateSlackData: Slack = await this.slack.updateSlack(slackId, slackData)
+  public updateSlack = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const slackId: string = req.params.id
+      const slackData: Slack = req.body
+      const updateSlackData: Slack = await this.slack.updateSlack(slackId, slackData)
 
-  //     res.status(200).json({ data: updateSlackData, message: 'updated' })
-  //   } catch (error) {
-  //     next(error)
-  //   }
-  // }
+      res.status(200).json({ data: updateSlackData, message: 'updated' })
+    } catch (error) {
+      next(error)
+    }
+  }
 
-  // public deleteSlack = async (req: Request, res: Response, next: NextFunction) => {
-  //   try {
-  //     const userId: string = req.params.id
-  //     const deleteSlackData: Slack = await this.slack.deleteSlack(userId)
+  public deleteSlack = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const userId: string = req.params.id
+      const deleteSlackData: Slack = await this.slack.deleteSlack(userId)
 
-  //     res.status(200).json({ data: deleteSlackData, message: 'deleted' })
-  //   } catch (error) {
-  //     next(error)
-  //   }
-  // }
+      res.status(200).json({ data: deleteSlackData, message: 'deleted' })
+    } catch (error) {
+      next(error)
+    }
+  }
 }
