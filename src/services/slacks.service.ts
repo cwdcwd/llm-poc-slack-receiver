@@ -1,5 +1,5 @@
 import { Service } from 'typedi'
-import { HttpException } from '@exceptions/httpException'
+import { HttpException } from '@exceptions/HttpException'
 import { Slack } from '@/interfaces/slacks.interface'
 import { SlackModel } from '@/models/slacks.model'
 
@@ -18,8 +18,8 @@ export class SlackService {
     const findSlack: Slack = await SlackModel.findOne({ _id: SlackId })
 
     if (!findSlack) {
-      // throw new HttpException(409, "Slack doesn't exist")
-      throw new Error("Slack doesn't exist")
+      throw new HttpException(409, "Slack doesn't exist")
+      //throw new Error("Slack doesn't exist")
     }
 
     return findSlack
