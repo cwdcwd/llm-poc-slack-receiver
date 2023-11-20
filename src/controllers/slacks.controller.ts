@@ -116,4 +116,24 @@ export class SlackController {
       next(error)
     }
   }
+
+  public verify = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const verifyData: boolean = await this.slack.verify()
+
+      res.status(200).json({ data: verifyData, message: 'verified' })
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  public authorize = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const authorizeData: boolean = await this.slack.authorize()
+
+      res.status(200).json({ data: authorizeData, message: 'authorized' })
+    } catch (error) {
+      next(error)
+    }
+  }
 }

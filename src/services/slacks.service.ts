@@ -49,4 +49,12 @@ export class SlackService {
 
     return deleteSlackById
   }
+
+  public async verify(): Promise<boolean> {
+    return true
+  }
+
+  public async authorize(): Promise<boolean> {
+    return true
+  }
 }
