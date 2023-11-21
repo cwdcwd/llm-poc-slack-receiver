@@ -9,6 +9,8 @@ import { Document } from 'langchain/document'
 import { OpenAIEmbeddings } from 'langchain/embeddings/openai'
 import { PineconeStore } from 'langchain/vectorstores/pinecone'
 
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY || ''
+
 @Service()
 export class SlackService {
   constructor() {
@@ -44,7 +46,7 @@ export class SlackService {
       pageContent: event.text,
     })
     const pineconeIndex = await pineconeConnection()
-    const store = await PineconeStore.fromExistingIndex(new OpenAIEmbeddings(), { pineconeIndex })
+    const store = await PineconeStore.fromExistingIndex(new OpenAIEmbeddings({ openAIApiKey: OPENAI_API_KEY }), { pineconeIndex })
     store.addDocuments([slackDoc])
     return createSlackData
   }
