@@ -46,7 +46,6 @@ export class SlackService {
     const pineconeIndex = await pineconeConnection()
     const store = await PineconeStore.fromExistingIndex(new OpenAIEmbeddings(), { pineconeIndex })
     store.addDocuments([slackDoc])
-
     return createSlackData
   }
 

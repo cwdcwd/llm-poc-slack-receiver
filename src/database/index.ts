@@ -2,7 +2,7 @@ import { logger } from '@/utils/logger'
 import { connect, set } from 'mongoose'
 import { Pinecone } from '@pinecone-database/pinecone'
 import { NODE_ENV, DB_HOST, DB_PORT, DB_DATABASE, DB_USER, DB_PASSWORD } from '@config'
-import { PINECONE_ENV, PINECONE_INDEX } from '@config'
+import { PINECONE_ENVIRONMENT, PINECONE_INDEX } from '@config'
 
 export const dbConnection = async () => {
   const dbConfig = {
@@ -35,7 +35,7 @@ export const pineconeConnection = async (indexName?: string) => {
   let index = null
   logger.info('Connecting to pinecone...')
   logger.info(PINECONE_INDEX)
-  logger.info(PINECONE_ENV)
+  logger.info(PINECONE_ENVIRONMENT)
   try {
     const pinecone = new Pinecone()
     index = pinecone.Index(indexName || PINECONE_INDEX)
