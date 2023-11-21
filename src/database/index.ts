@@ -31,7 +31,7 @@ export const dbConnection = async () => {
   }
 }
 
-export const pineconeConnection = async (indexName: string) => {
+export const pineconeConnection = async (indexName?: string) => {
   let index = null
   logger.info('Connecting to pinecone...')
   logger.info(PINECONE_INDEX)

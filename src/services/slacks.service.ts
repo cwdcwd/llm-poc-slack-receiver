@@ -2,9 +2,12 @@ import { Service } from 'typedi'
 import { HttpException } from '@exceptions/HttpException'
 import { Slack } from '@/interfaces/slacks.interface'
 import { SlackModel } from '@/models/slacks.model'
-import { Document } from 'langchain/document'
-import { OpenAI } from 'langchain/llms/openai'
 import { pineconeConnection } from '@/database'
+
+import { Document } from 'langchain/document'
+// import { OpenAI } from 'langchain/llms/openai'
+import { OpenAIEmbeddings } from 'langchain/embeddings/openai'
+import { PineconeStore } from 'langchain/vectorstores/pinecone'
 
 @Service()
 export class SlackService {
@@ -40,8 +43,10 @@ export class SlackService {
       },
       pageContent: event.text,
     })
-    const index = pineconeConnection()
-    index.addDocuments([slackDoc])
+    const pineconeIndex = await pineconeConnection()
+    const store = await PineconeStore.fromExistingIndex(new OpenAIEmbeddings(), { pineconeIndex })
+    store.addDocuments([slackDoc])
+
     return createSlackData
   }
 
