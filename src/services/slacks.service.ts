@@ -11,6 +11,7 @@ import { PineconeStore } from 'langchain/vectorstores/pinecone'
 import { logger } from '@/utils/logger'
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY || ''
+const PINECONE_NAMESPACE = process.env.PINECONE_NAMESPACE || ''
 
 @Service()
 export class SlackService {
@@ -47,7 +48,10 @@ export class SlackService {
       pageContent: event.text,
     })
     const pineconeIndex = await pineconeConnection()
-    const store = await PineconeStore.fromExistingIndex(new OpenAIEmbeddings({ openAIApiKey: OPENAI_API_KEY }), { pineconeIndex })
+    const store = await PineconeStore.fromExistingIndex(new OpenAIEmbeddings({ openAIApiKey: OPENAI_API_KEY }), {
+      pineconeIndex,
+      namespace: PINECONE_NAMESPACE,
+    })
     const docIds = await store.addDocuments([slackDoc])
     logger.info(`docIds: ${docIds}`)
     return createSlackData
