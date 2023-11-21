@@ -1,6 +1,8 @@
 import { logger } from '@/utils/logger'
 import { connect, set } from 'mongoose'
+import { Pinecone } from '@pinecone-database/pinecone'
 import { NODE_ENV, DB_HOST, DB_PORT, DB_DATABASE, DB_USER, DB_PASSWORD } from '@config'
+import { PINECONE_ENVIRONMENT, PINECONE_INDEX } from '@config'
 
 export const dbConnection = async () => {
   const dbConfig = {
@@ -27,4 +29,20 @@ export const dbConnection = async () => {
     logger.error('Error connecting to database: ', error)
     process.exit(1)
   }
+}
+
+export const pineconeConnection = async (indexName?: string) => {
+  let index = null
+  logger.info('Connecting to pinecone...')
+  logger.info(PINECONE_INDEX)
+  logger.info(PINECONE_ENVIRONMENT)
+  try {
+    const pinecone = new Pinecone()
+    index = pinecone.Index(indexName || PINECONE_INDEX)
+  } catch (error) {
+    logger.error('Error connecting to pinecone: ', error)
+    process.exit(1)
+  }
+
+  return index
 }
