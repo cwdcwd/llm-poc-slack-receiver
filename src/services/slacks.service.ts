@@ -2,6 +2,9 @@ import { Service } from 'typedi'
 import { HttpException } from '@exceptions/HttpException'
 import { Slack } from '@/interfaces/slacks.interface'
 import { SlackModel } from '@/models/slacks.model'
+import { Document } from 'langchain/document'
+import { OpenAI } from 'langchain/llms/openai'
+import { pineconeConnection } from '@/database'
 
 @Service()
 export class SlackService {
@@ -27,7 +30,18 @@ export class SlackService {
     if (findSlack) throw new HttpException(409, `This id ${SlackData._id} already exists`)
 
     const createSlackData: Slack = await SlackModel.create({ ...SlackData })
-
+    const { event } = SlackData
+    const slackDoc = new Document({
+      metadata: {
+        userId: event.user,
+        timestamp: event.event_ts,
+        teamId: SlackData.team_id,
+        channelId: event.channel,
+      },
+      pageContent: event.text,
+    })
+    const index = pineconeConnection()
+    index.addDocuments([slackDoc])
     return createSlackData
   }
 
