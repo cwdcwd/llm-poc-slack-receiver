@@ -18,6 +18,11 @@ export class SlackRoute implements Routes {
     console.log('SlackRoute initializeRoutes')
     console.log('SlackRoute initializeRoutes validateOrigin')
     this.router.use(this.slack.validateOrigin)
+    console.log('SlackRoute initializeRoutes verify')
+    this.router.get(`${this.path}/verify`, this.slack.verify)
+    console.log('SlackRoute initializeRoutes authorize')
+    this.router.get(`${this.path}/authorize`, this.slack.authorize)
+
     console.log('SlackRoute initializeRoutes getSlacks')
     this.router.get(`${this.path}`, this.slack.getSlacks)
     console.log('SlackRoute initializeRoutes getSlackById')
@@ -30,10 +35,6 @@ export class SlackRoute implements Routes {
     // this.router.put(`${this.path}/:id`, this.slack.updateSlack)
     console.log('SlackRoute initializeRoutes deleteSlack')
     this.router.delete(`${this.path}/:id`, this.slack.deleteSlack)
-    console.log('SlackRoute initializeRoutes verify')
-    this.router.get(`${this.path}/verify`, this.slack.verify)
-    console.log('SlackRoute initializeRoutes authorize')
-    this.router.get(`${this.path}/authorize`, this.slack.authorize)
     console.log('SlackRoute initializeRoutes end')
   }
 }

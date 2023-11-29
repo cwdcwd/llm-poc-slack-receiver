@@ -19,7 +19,7 @@ export class SlackController {
     //   res.status(403).send('Forbidden')
     // }
     // console.log(req.headers)
-    if (req.method === 'GET') {
+    if (req.method === 'GET' || req.path === '/slacks/verify' || req.path === '/slacks/authorize') {
       next()
       return
     }
